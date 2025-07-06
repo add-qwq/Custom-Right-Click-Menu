@@ -1,0 +1,51 @@
+<head>
+    <link href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CRCMenu.css">
+</head>
+
+<body>
+
+    <div id="custom-menu">
+        <div class="menu-header">常规操作</div>
+        <div class="menu-item" id="back-item" onclick="backAction()">
+            <i class="fa fa-arrow-left"></i>
+            <span>返回</span>
+        </div>
+        <div class="menu-item" id="refresh-item" onclick="refreshAction()">
+            <i class="fa fa-refresh"></i>
+            <span>刷新</span>
+        </div>
+
+        <div class="menu-divider"></div>
+        <div class="menu-header">编辑操作</div>
+        <div class="menu-item" id="copy-item" onclick="copyAction()">
+            <i class="fa fa-copy"></i>
+            <span>复制</span>
+        </div>
+        <div class="menu-item" id="paste-item" onclick="pasteAction()">
+            <i class="fa fa-paste"></i>
+            <span>粘贴</span>
+        </div>
+
+        <div class="menu-divider"></div>
+        <div class="menu-header">链接操作</div>
+        <div class="menu-item" id="open-in-new-tab-item" onclick="openInNewTabAction()">
+            <i class="fa fa-external-link"></i>
+            <span>在新标签页打开</span>
+        </div>
+        <div class="menu-item" id="copy-link-item" onclick="copyLinkAction()">
+            <i class="fa fa-link"></i>
+            <span>复制链接地址</span>
+        </div>
+
+        <div class="menu-divider"></div>
+        <div class="menu-header">其他操作</div>
+        <div class="menu-item" id="back-to-home-item" onclick="backToHomeAction()">
+            <i class="fa fa-home"></i>
+            <span>返回主页</span>
+        </div>
+    </div>
+
+    <script src="CRCMenu.js"></script>
+
+</body>
