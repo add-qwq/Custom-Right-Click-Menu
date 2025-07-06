@@ -18,7 +18,7 @@ This is a custom right-click menu implemented with HTML, JavaScript, and CSS. It
 ## Project Structure
 ### Folder Organization
 - CRCMenu-CSS/: Contains the original source code described in this README, using pure CSS for styling.
-- CRCMenu-Tailwind/: Provides a Tailwind CSS version, suitable for projects that already use Tailwind CSS or developers who prefer Tailwind-based styling.
+- CRCMenu-Tailwind/: Provides a Tailwind CSS version, suitable for projects that already use Tailwind CSS or developers who prefer Tailwind-based styling.  
 
 
 ## Description  
@@ -36,16 +36,41 @@ This project provides a customizable right-click context menu that overrides the
 - CSS-animated interface with hover effects and adaptive positioning  
 
 
+## Functional Scenarios
+### Context-Dependent Menu Display Rules  
+#### 1. No Content Selected (Normal State)  
+Trigger: Right-click on any area without text selection or link/input focus  
+Options: Go to Main Interface / Refresh Page / Paste Clipboard  
+
+#### 2. Right-click on a Link  
+Trigger: Right-click target is an <a> tag element  
+Options: Open Link in New Tab / Copy Link Address  
+
+#### 3. Text Selection Active  
+Trigger: Text is selected via mouse drag (window.getSelection().toString() !== '')  
+Options: Go to Main Interface / Refresh Page / Copy Selected Text / Paste Clipboard  
+
+#### 4. Input Field Focused  
+Trigger: Current focused element is <input> or <textarea> (document.activeElement.tagName.match(/INPUT|TEXTAREA/))  
+Options: Go to Main Interface / Refresh Page / Paste Clipboard  
+
+### Implementation Principle  
+Detected in real-time via JavaScript:  
+1. Text selection using window.getSelection() to obtain selected content  
+2. Link detection via event delegation to check the tag name of the right-click target element (event.target.tagName === 'A')  
+3. Input focus detection by monitoring focus events and checking the type of document.activeElement  
+
+
 ## File Structure  
 ### CRCMenu-CSS/ (Original Version)
-- rcm.html       # Main HTML file (separate from CSS/JS)  
+- rcm.html       # Main HTML file (separated from CSS/JS)  
 - rcm.js         # JavaScript logic for menu control  
 - rcm.css        # CSS styles for layout and animations  
 - integration.html # All-in-one version with embedded resources  
 
 ### CRCMenu-Tailwind/ (Tailwind Version)
 - rcm-tailwind.html  # HTML with Tailwind CSS classes  
-- rcm-tailwind.js    # JavaScript logic (compatible with Tailwind)  
+- rcm-tailwind.js    # JavaScript logic compatible with Tailwind  
 - integration-tailwind.html # Embedded Tailwind version  
 
 
@@ -116,6 +141,31 @@ This project is licensed under the [Apache-2.0 LICENSE](LICENSE).
 - CSS动画界面，包含悬停效果和自适应定位  
 
 
+## 功能场景说明  
+### 不同上下文下的菜单显示规则  
+#### 1. 无内容选中时（常规状态）  
+触发条件：页面无文本选中，右键点击任意非链接/输入框区域  
+显示选项：返回主界面 / 刷新当前页面 / 粘贴剪贴板内容  
+
+#### 2. 右键点击链接时  
+触发条件：鼠标右键位于<a>标签元素上  
+显示选项：在新标签页打开链接 / 复制链接地址  
+
+#### 3. 选中文本时  
+触发条件：通过鼠标拖动选中页面文本（window.getSelection().toString() !== ''）  
+显示选项：返回主界面 / 刷新当前页面 / 复制选中文本 / 粘贴剪贴板内容  
+
+#### 4. 聚焦输入框时  
+触发条件：当前聚焦元素为<input>或<textarea>（document.activeElement.tagName.match(/INPUT|TEXTAREA/)）  
+显示选项：返回主界面 / 刷新当前页面 / 粘贴剪贴板内容  
+
+### 实现原理  
+通过JavaScript实时检测以下状态：  
+1. 选中文本检测：利用window.getSelection()获取选中内容  
+2. 链接检测：通过事件委托获取右键目标元素的标签名（event.target.tagName === 'A'）  
+3. 输入框聚焦检测：监听focus事件并检查document.activeElement类型  
+
+
 ## 文件结构  
 ### CRCMenu-CSS/（原始版本）
 - rcm.html       # 主HTML文件（与CSS/JS分离）  
@@ -160,4 +210,4 @@ This project is licensed under the [Apache-2.0 LICENSE](LICENSE).
 
 
 ## 许可证  
-本项目采用[Apache-2.0 LICENSE](LICENSE)授权。
+本项目采用[Apache-2.0 LICENSE](LICENSE)授权。  
