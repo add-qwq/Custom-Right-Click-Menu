@@ -187,16 +187,25 @@
             <i class="fa fa-link"></i>
             <span>复制链接地址</span>
         </div>
+
+        <div class="menu-divider"></div>
+        <div class="menu-header">其他操作</div>
+        <div class="menu-item" id="back-to-home-item" onclick="backToHomeAction()">
+            <i class="fa fa-home"></i>
+            <span>返回主页</span>
+        </div>
     </div>
 
+
     <script>
-        const customMenu = document.getElementById('custom-menu');
+       const customMenu = document.getElementById('custom-menu');
 const backItem = document.getElementById('back-item');
 const refreshItem = document.getElementById('refresh-item');
 const copyItem = document.getElementById('copy-item');
 const pasteItem = document.getElementById('paste-item');
 const openInNewTabItem = document.getElementById('open-in-new-tab-item');
 const copyLinkItem = document.getElementById('copy-link-item');
+const backToHomeItem = document.getElementById('back-to-home-item');
 
 let isMenuVisible = false;
 let currentTarget = null;
@@ -336,6 +345,7 @@ function updateMenuItemsVisibility() {
     pasteItem.style.display = 'flex';
     openInNewTabItem.style.display = 'flex';
     copyLinkItem.style.display = 'flex';
+    backToHomeItem.style.display = 'flex';
 
     if (currentTarget) {
         backItem.style.display = 'none';
@@ -431,6 +441,11 @@ function copyLinkAction() {
             console.error('复制链接失败: ', err);
         });
     }
+    hideMenu();
+}
+
+function backToHomeAction() {
+    window.location.href = '/';
     hideMenu();
 }
 
