@@ -5,6 +5,7 @@ const copyItem = document.getElementById('copy-item');
 const pasteItem = document.getElementById('paste-item');
 const openInNewTabItem = document.getElementById('open-in-new-tab-item');
 const copyLinkItem = document.getElementById('copy-link-item');
+const backToHomeItem = document.getElementById('back-to-home-item');
 
 let isMenuVisible = false;
 let currentTarget = null;
@@ -144,6 +145,7 @@ function updateMenuItemsVisibility() {
     pasteItem.style.display = 'flex';
     openInNewTabItem.style.display = 'flex';
     copyLinkItem.style.display = 'flex';
+    backToHomeItem.style.display = 'flex';
 
     if (currentTarget) {
         backItem.style.display = 'none';
@@ -239,6 +241,11 @@ function copyLinkAction() {
             console.error('复制链接失败: ', err);
         });
     }
+    hideMenu();
+}
+
+function backToHomeAction() {
+    window.location.href = '/';
     hideMenu();
 }
 
