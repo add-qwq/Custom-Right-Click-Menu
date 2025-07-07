@@ -9,6 +9,8 @@
 # English:
 # Custom Right-Click-Menu  
 
+Do you want to experience automated management? (Automatically add this right-click menu component to your webpage, automatically update version)
+go to[CRCMenu-Manager](https://github.com/add-qwq/CRCMenu-Manager).
 
 ![GitHub license](https://img.shields.io/github/license/add-qwq/Custom-Right-Click-Menu?style=flat-square)  
 
@@ -114,6 +116,8 @@ This project is licensed under the [Apache-2.0 LICENSE](LICENSE).
 # 中文：
 # 自定义右键菜单  
 
+想要体验自动化管理吗？（自动添加此右键菜单组件到您的网页，自动化更新版本）
+前往[CRCMenu-Manager](https://github.com/add-qwq/CRCMenu-Manager)
 
 ![GitHub license](https://img.shields.io/github/license/add-qwq/Custom-Right-Click-Menu?style=flat-square)  
 
