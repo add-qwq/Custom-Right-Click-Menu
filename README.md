@@ -134,7 +134,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE).
 
 #### 文件夹说明
 - **CRCMenu-CSS/**：包含使用纯CSS样式的源代码，轻量且易于定制。  
-- **CRCMenu-Tailwind/**：包含基于Tailwind CSS的旧版本（不再支持Tailwind V1以上版本）。建议使用CRCMenu-CSS版本获取活跃支持。
+- **CRCMenu-Tailwind/**：包含基于Tailwind CSS的旧版本（不再支持V1以上版本）。建议使用CRCMenu-CSS版本获取活跃支持。
 
 ### 项目说明
 **[在线演示（点击访问）](https://www.rockaz.top/GitHub-Project-Demo/Custom-Right-Click-Menu/)**  
