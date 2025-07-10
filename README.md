@@ -46,27 +46,27 @@ This project delivers a flexible right-click menu that overrides the browser's n
    - Options: Back to Main Interface / Refresh Page  
 
 2. **Right-Click on a Link**  
-   - Trigger: Right-click on an `<a>` tag or element with a clickable URL  
+   - Trigger: Right-click on an <a> tag or element with a clickable URL  
    - Options: Open Link in New Tab / Copy Link Address  
 
 3. **Right-Click on an Image**  
-   - Trigger: Right-click on an `<img>` tag or element with a background image  
+   - Trigger: Right-click on an <img> tag or element with a background image  
    - Options: Open Image in New Tab / Copy Image URL  
 
 4. **Text Selected**  
-   - Trigger: Text is selected via mouse drag (`window.getSelection().toString() !== ''`)  
+   - Trigger: Text is selected via mouse drag (window.getSelection().toString() !== '')  
    - Options: Back to Main Interface / Refresh Page / Copy Selected Text  
 
 5. **Input Field Focused**  
-   - Trigger: Right-click while an `<input>` or `<textarea>` is focused  
+   - Trigger: Right-click while an <input> or <textarea> is focused  
    - Options: Back to Main Interface / Refresh Page / Paste Clipboard Content  
 
 #### Implementation Principle
 The menu leverages JavaScript to detect context in real-time:  
-- Text selection via `window.getSelection()`  
-- Link detection by checking the target element or its ancestors for `<a>` tags or `onclick` handlers  
-- Image detection via `<img>` tags or computed `background-image` styles  
-- Input focus detection using `document.activeElement` for `<input>` or `<textarea>` elements  
+- Text selection via window.getSelection()  
+- Link detection by checking the target element or its ancestors for <a> tags or onclick handlers  
+- Image detection via <img> tags or computed background-image styles  
+- Input focus detection using document.activeElement for <input> or <textarea> elements  
 
 ### File Structure
 
@@ -111,7 +111,7 @@ The menu leverages JavaScript to detect context in real-time:
    - Note: This version is no longer supported; consider migrating to the CSS version for future updates.  
 
 ### Compatibility
-Compatible with modern browsers (Chrome, Firefox, Edge, Safari) supporting the `navigator.clipboard` API. Fallback mechanisms ensure basic functionality in older browsers, though some features (e.g., clipboard pasting) may be limited.
+Compatible with modern browsers (Chrome, Firefox, Edge, Safari) supporting the navigator.clipboard API. Fallback mechanisms ensure basic functionality in older browsers, though some features (e.g., clipboard pasting) may be limited.
 
 ### License
 This project is licensed under the [Apache-2.0 License](LICENSE).
@@ -158,27 +158,27 @@ This project is licensed under the [Apache-2.0 License](LICENSE).
    - 选项：返回主界面 / 刷新页面  
 
 2. **右键点击链接**  
-   - 触发条件：右键点击`<a>`标签或含URL的可点击元素  
+   - 触发条件：右键点击<a>标签或含URL的可点击元素  
    - 选项：在新标签页打开链接 / 复制链接地址  
 
 3. **右键点击图片**  
-   - 触发条件：右键点击`<img>`标签或含背景图片的元素  
+   - 触发条件：右键点击<img>标签或含背景图片的元素  
    - 选项：在新标签页打开图片 / 复制图片URL  
 
 4. **选中文本**  
-   - 触发条件：通过鼠标拖动选中文本（`window.getSelection().toString() !== ''`）  
+   - 触发条件：通过鼠标拖动选中文本（window.getSelection().toString() !== ''）  
    - 选项：返回主界面 / 刷新页面 / 复制选中文本  
 
 5. **输入框聚焦**  
-   - 触发条件：右键时`<input>`或`<textarea>`处于聚焦状态  
+   - 触发条件：右键时<input>或<textarea>处于聚焦状态  
    - 选项：返回主界面 / 刷新页面 / 粘贴剪贴板内容  
 
 #### 实现原理
 通过JavaScript实时检测上下文：  
-- 文本选中：使用`window.getSelection()`获取内容  
-- 链接检测：检查目标元素或其祖先的`<a>`标签或`onclick`事件  
-- 图片检测：识别`<img>`标签或计算的`background-image`样式  
-- 输入框聚焦：通过`document.activeElement`检测`<input>`或`<textarea>`  
+- 文本选中：使用window.getSelection()获取内容  
+- 链接检测：检查目标元素或其祖先的<a>标签或onclick事件  
+- 图片检测：识别<img>标签或计算的background-image样式  
+- 输入框聚焦：通过document.activeElement检测<input>或<textarea>  
 
 ### 文件结构
 
@@ -204,26 +204,26 @@ This project is licensed under the [Apache-2.0 License](LICENSE).
    - 解压到本地目录。  
 
 2. **运行菜单**：  
-   - CSS版本：打开`CRCMenu.html`或`All-Custom Right-Click-Menu.html`在现代浏览器中运行。  
-   - Tailwind版本：打开`rcm-tailwind.html`或`integration-tailwind.html`（注：已停更）。  
+   - CSS版本：打开CRCMenu.html或All-Custom Right-Click-Menu.html在现代浏览器中运行。  
+   - Tailwind版本：打开rcm-tailwind.html或integration-tailwind.html（注：已停更）。  
    - 在页面右键触发自定义菜单。  
 
 #### 个性化定制
 1. **CSS版本（CRCMenu-CSS/）**  
-   - 修改`CRCMenu.css`调整颜色、尺寸或动画效果。  
-   - 编辑`CRCMenu.js`以：  
-     - 修改`backToHomeAction()`中的主界面URL。  
+   - 修改CRCMenu.css调整颜色、尺寸或动画效果。  
+   - 编辑CRCMenu.js以：  
+     - 修改backToHomeAction()中的主界面URL。  
      - 添加或删除菜单项及其功能逻辑。  
-   - 集成：在项目中链接`CRCMenu.css`和`CRCMenu.js`，或以`All-Custom Right-Click-Menu.html`为模板嵌入。  
+   - 集成：在项目中链接CRCMenu.css和CRCMenu.js，或以All-Custom Right-Click-Menu.html为模板嵌入。  
 
 2. **Tailwind版本（CRCMenu-Tailwind/，已停更）**  
    - 确保项目加载Tailwind CSS（V1）。  
-   - 修改`rcm-tailwind.html`中的Tailwind工具类调整样式。  
-   - 编辑`rcm-tailwind.js`进行功能定制，与CSS版本逻辑类似。  
+   - 修改rcm-tailwind.html中的Tailwind工具类调整样式。  
+   - 编辑rcm-tailwind.js进行功能定制，与CSS版本逻辑类似。  
    - 注：此版本不再维护，建议迁移到CSS版本以获取更新支持。  
 
 ### 兼容性说明
-支持具备`navigator.clipboard` API的现代浏览器（Chrome、Firefox、Edge、Safari）。旧版浏览器提供回退机制，但部分功能（如剪贴板粘贴）可能受限。
+支持具备navigator.clipboard API的现代浏览器（Chrome、Firefox、Edge、Safari）。旧版浏览器提供回退机制，但部分功能（如剪贴板粘贴）可能受限。
 
 ### 许可证
 本项目采用[Apache-2.0 License](LICENSE)授权。
