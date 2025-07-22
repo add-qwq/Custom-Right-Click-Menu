@@ -193,7 +193,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE).
 - **rcm-tailwind.js**：Tailwind版本的JavaScript逻辑（已停更）  
 - **integration-tailwind.html**：内嵌Tailwind资源的单文件（已停更）  
 
-*注：Tailwind版本不再支持Tailwind CSS V1以上版本。建议使用CRCMenu-CSS版本进行开发和维护。*
+*注：Tailwind版本不再支持V1以上版本。建议使用CRCMenu-CSS版本进行开发和维护*
 
 ### 快速使用
 
