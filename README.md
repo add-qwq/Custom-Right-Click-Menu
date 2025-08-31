@@ -64,6 +64,8 @@ V2 is simplified to a **single core file** (no redundant folders):
 
 *Note: The legacy Tailwind CSS version (V1) is no longer maintained. V2 focuses on a lightweight, framework-free deployment experience.*
 
+*The CRCMenu Tailwind folder stores the Tailwind version of CRCMenu, which is only applicable to V1. It has been discontinued and is not related to V2*
+
 ### Quick Start
 
 #### 1. Get the Source Code
@@ -274,6 +276,8 @@ V2版本简化为**单核心文件**（无冗余文件夹）：
   - 事件处理（点击/滚动/按键）
 
 *注：旧版Tailwind CSS版本（V1）已停止维护。V2专注于轻量、无框架的部署体验。*
+
+*CRCMenu-Tailwind文件夹存储的是仅适用于V1的CRCMenu的Tailwind版本，现已停更，与V2无关系*
 
 ### 快速使用
 
