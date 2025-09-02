@@ -16,7 +16,7 @@ This is Version 2 of Custom-Right-Click-Menu (CRCM), rewritten based on **Web Co
 
 Compared to V1, V2 fixes most known issues, improves extensibility, and is simplified to **single JS file deployment** — ready to use with just an import.
 
-Want to experience automated management (including automatically adding components to web pages + automatic version updates)? Experience rapid project management through [CRC Menu Manager](https://github.com/add-qwq/CRCMenu-Manager). 
+Want to experience automated management (including automatically adding components to web pages + automatic version updates)? Experience rapid project management through [CRCMenu Manager](https://github.com/add-qwq/CRCMenu-Manager). 
 
 Want to use this right-click menu across all websites? Install the [Right Click Menu - Browser Extension](https://github.com/add-qwq/CRCM-Browser-Plugin).
 
@@ -229,7 +229,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 相较于V1版本，V2修复了多数已知问题，提升了扩展性，并简化为**单JS文件部署**——引入即可使用。
 
-想要体验自动化管理（自动添加组件到网页+自动版本更新）？通过[CRC菜单管理器](https://github.com/add-qwq/CRCMenu-Manager)来体验项目的快速管理。  
+想要体验自动化管理（自动添加组件到网页+自动版本更新）？通过[CRCM菜单管理器](https://github.com/add-qwq/CRCMenu-Manager)来体验项目的快速管理。  
 
 想在所有网站上体验此右键菜单？请安装[右键菜单 - 浏览器扩展](https://github.com/add-qwq/CRCM-Browser-Plugin)。
 
