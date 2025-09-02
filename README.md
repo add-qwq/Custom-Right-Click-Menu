@@ -209,7 +209,7 @@ The menu uses JavaScript to detect the right-click context in real time:
 
 ### Acknowledgements
 - **Project Author**: add-qwq ([GitHub](https://github.com/add-qwq))
-- **Special Thanks**: Conard-Ferenc ([GitHub](https://github.com/Conard-Ferenc)) for providing core design ideas and technical support for V2.
+- **Special Thanks**: Conard-Ferenc ([GitHub](https://github.com/Conard-Ferenc)) for providing core design ideas and partial technical support for V2.
 
 ### Planning
 - Possible future updates to the secondary expansion menu function
@@ -422,7 +422,7 @@ menu.setTheme({
 
 ### 致谢
 - **项目作者**：add-qwq ([GitHub](https://github.com/add-qwq))
-- **特别感谢**：Conard-Ferenc ([GitHub](https://github.com/Conard-Ferenc)) 为V2版本提供核心设计思路与技术支持
+- **特别感谢**：Conard-Ferenc ([GitHub](https://github.com/Conard-Ferenc)) 为V2版本提供核心设计思路与部分技术支持
 
 ### 规划
 - 未来可能更新二级展开菜单功能
