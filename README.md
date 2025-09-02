@@ -14,7 +14,7 @@ We are confident that this project is the **most complete and refined native Jav
 
 This is Version 2 of Custom-Right-Click-Menu (CRCM), rewritten based on **Web Components**. It introduces new features including custom grouping, dynamic menu item show/hide, custom menu items, theme customization, and external stylesheet loading.
 
-Compared to V1, V2 fixes most known issues, improves extensibility, and is simplified to **single JS file deployment** — ready to use with just an import.
+Compared to V1, V2 Zero Dependency, High Configurability, Easy Integration, fixes most known issues, improves extensibility, and is simplified to **single JS file deployment** — ready to use with just an import.
 
 Want to experience automated management (including automatically adding components to web pages + automatic version updates)? Experience rapid project management through [CRCMenu Manager](https://github.com/add-qwq/CRCMenu-Manager). 
 
@@ -227,7 +227,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 本项目是Custom-Right-Click-Menu（简称CRCM）的**V2版本**，基于**Web Components**重写，新增自定义分组、动态菜单项显隐、自定义菜单项、主题定制、外部样式表加载等功能。
 
-相较于V1版本，V2修复了多数已知问题，提升了扩展性，并简化为**单JS文件部署**——引入即可使用。
+相较于V1版本，V2零依赖、高可配、易集成，修复了多数已知问题，提升了扩展性，并简化为**单JS文件部署**——引入即可使用。
 
 想要体验自动化管理（自动添加组件到网页+自动版本更新）？通过[CRCM菜单管理器](https://github.com/add-qwq/CRCMenu-Manager)来体验项目的快速管理。  
 
