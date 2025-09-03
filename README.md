@@ -10,7 +10,7 @@
 ## English
 
 ### Custom Right-Click Menu (V2)
-We are confident that this project is by far (with the specific time subject to the project's commits time) the **most fully-featured, open-source, and finest native JavaScript custom context menu** on GitHub—no reliance on any frameworks required.
+We are confident that this project is by far (with the specific time subject to the project's commits time) the **most fully-featured, open-source, and finest native JavaScript custom context menu project** on GitHub—no reliance on any frameworks required.
 
 Of course, many excellent developers may simply not have ventured into such tools; we have merely turned this idea into a practical, implementable solution.
 
@@ -223,7 +223,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 ## 中文
 
 ### 自定义右键菜单（V2）
-我们有信心称该项目是GitHub上目前为止（具体时间以项目commits时间为准），功能最完善的、开源的、最优秀的**原生JavaScript自定义右键菜单**——无需依赖任何框架
+我们有信心称该项目是GitHub上目前为止（具体时间以项目commits时间为准），功能最完善的、开源的、最优秀的**原生JavaScript自定义右键菜单项目**——无需依赖任何框架
 
 当然，许多优秀的开发者或许只是未涉足此类工具；我们仅是将这一想法转化为了可落地的解决方案。
 
