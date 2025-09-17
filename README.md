@@ -26,11 +26,11 @@ Want to use this right-click menu across all websites? Install the [Right Click 
 ![GitHub stars](https://img.shields.io/github/stars/add-qwq/Custom-Right-Click-Menu)
 
 ### Project Overview
-**[Online Demo (Click to Access - China Mirror Site)](https://www.rockaz.top/GitHub-Project-Demo/Custom-Right-Click-Menu/)**  
-*Note: The server of this website is located in China. For security defense purposes, all traffic from outside China has been blocked. Users outside China (users worldwide) please refer to the link below.*
+- **[Online Demo (Click to Access - China Mirror Site)](https://www.rockaz.top/GitHub-Project-Demo/Custom-Right-Click-Menu/)**  
+*Note: The server of this website is located in China, ensuring faster and more stable access for users within China. The page language is Chinese. However, for security defense purposes, all traffic from outside China has been blocked.*
 
-**[Online Demo (Click to Access - GitHub Page Mirror Site)](https://add-qwq.github.io/Custom-Right-Click-Menu(DemoPage)/)**  
-*Note: This website is hosted on GitHub Page and is suitable for users outside China (users worldwide) to access.*
+- **[Online Demo (Click to Access - GitHub Page Mirror Site)](https://add-qwq.github.io/Custom-Right-Click-Menu(DemoPage)/)**  
+*Note: This website is hosted on GitHub Pages. Users within China may experience significant access delays, so it is more suitable for users outside China (users around the world).*
 
 Centered around Web Components, this project replaces the browser's native right-click menu with a flexible, highly extensible custom interface. It supports context-aware operations (text copy/paste, link/image handling, page controls) while allowing in-depth customization of styles, structure, and functionality.
 
@@ -251,10 +251,10 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 ### 项目概述
 **[在线演示（点击访问--中国镜像站）](https://www.rockaz.top/GitHub-Project-Demo/Custom-Right-Click-Menu/)**  
-*注：该网站服务器位于中国，出于安全防御目的，已封锁所有中国以外的流量，中国境外用户（全球各地用户）请看下方*
+*注：该网站服务器位于中国，中国境内用户访问更快速稳定页面语言为中文，但出于安全防御目的，我们已封锁所有中国以外的流量*
 
 **[在线演示（点击访问--GitHub Page镜像站）](https://add-qwq.github.io/Custom-Right-Click-Menu(DemoPage)/)**  
-*注：该网站由GitHub Page托管，适合中国境外用户（全球各地用户）访问*
+*注：该网站由GitHub Page托管，中国境内用户访问可能有较大延迟，适合中国境外用户（全球各地用户）访问*
 
 本项目以Web Components为核心，替代浏览器原生右键菜单，提供灵活且高可扩展的自定义界面。支持上下文感知操作（文本复制/粘贴、链接/图片处理、页面控制），同时允许深度定制样式、结构与功能
 
