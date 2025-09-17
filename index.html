@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom-Right-Click-Menu Demo Page</title>
+    <link rel="icon" href="/favicon.png?v=20" type="image/png">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-light: #eff6ff;
+            --text-dark: #1e293b;
+            --text-gray: #475569;
+            --border-light: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid transparent;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        h1 {
+            color: var(--text-dark);
+            margin-bottom: 0.85rem;
+            font-size: 2.1rem;
+        }
+
+        h1 a {
+            color: var(--text-dark);
+            margin-bottom: 0.85rem;
+            font-size: 1.8rem !important;
+        }
+
+        h2 {
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        h3 a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        h3 a:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 1rem 0;
+            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2);
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: #2563eb;
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .theme-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .demo-content {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .demo-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .demo-box:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        a {
+            color: var(--primary-color);
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        input[type="text"] {
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            width: 240px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            font-weight: 500;
+            background: var(--primary-light);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        .effects-section {
+            margin: 1.5rem auto;
+            max-width: 600px;
+            text-align: left;
+            padding: 0 1rem;
+        }
+
+        .effects-section p {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .effects-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .effects-list li {
+            padding: 0.15rem 0;
+            transition: color 0.2s ease;
+        }
+
+        .effects-list li:hover {
+            color: var(--primary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            width: 60%;
+        }
+    </style>
+
+    <style>
+        /* 中文镜像站点区域样式 */
+        .cn-mirror-section {
+            background-color: var(--primary-light);
+            /* 页面已定义的浅蓝背景，呼应主题 */
+            border: 1px solid var(--primary-color);
+            /* 主色调边框，强化区域感 */
+            border-radius: 8px;
+            /* 延续页面圆角风格（demo-box、按钮均为圆角） */
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            /* 上下留白，与上下元素（标题、h2）区分开 */
+            text-align: center;
+            /* 居中对齐，提升视觉焦点 */
+        }
+
+        .cn-mirror-desc {
+            color: var(--text-gray);
+            /* 复用页面文本灰色，避免刺眼 */
+            margin: 0 0 0.75rem;
+            /* 与链接保持间距 */
+            font-size: 0.95rem;
+        }
+
+        .cn-mirror-link {
+            display: inline-block;
+            /* 让 padding 生效 */
+            background-color: var(--primary-color);
+            /* 主色调背景，突出按钮感 */
+            color: white !important;
+            /* 白色文字，高对比度 */
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            /* 与页面按钮圆角一致 */
+            text-decoration: none;
+            /* 去除默认下划线 */
+            font-weight: 500;
+            /* 加粗文字，提升识别度 */
+            transition: all 0.2s ease;
+            /* 延续页面 hover 过渡效果 */
+            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2);
+            /* 轻微阴影，增强层次感 */
+        }
+
+        .cn-mirror-link:hover {
+            background-color: #2563eb;
+            /*  hover 时加深蓝色，与页面按钮逻辑一致 */
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+            /* 阴影放大，强化交互反馈 */
+            text-decoration: none;
+            /* 避免 hover 时出现下划线，保持按钮感 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>This is the demo page of the GitHub project:
+                <a href="https://github.com/add-qwq/Custom-Right-Click-Menu"
+                    class="project-link"><br>Custom-Right-Click-Menu</a>
+            </h1>
+
+            <div class="cn-mirror-section">
+                <p class="cn-mirror-desc">中文用户专属：切换至中国境内服务器镜像站点，页面语言为中文，中国境内用户访问更快速稳定</p>
+                <a href="https://www.rockaz.top/GitHub-Project-Demo/Custom-Right-Click-Menu/" class="cn-mirror-link">
+                    前往中文镜像站点
+                </a>
+            </div>
+
+            <h2>Right click (computer) / long press (mobile phone) to trigger the effect</h2>
+
+            <button class="theme-toggle-btn" id="themeToggleBtn">Click to switch theme (Current theme: Default
+                Style)</button>
+            <p class="theme-desc">(This page has a preset glass-style theme; the project supports custom styles for any
+                theme)</p>
+
+            <div class="effects-section">
+                <p>More Effects:</p>
+                <ul class="effects-list">
+                    <li>Select text and right-click</li>
+                    <li>Select an image and right-click</li>
+                    <li>Hover over an image and right-click</li>
+                    <li>Select a link and right-click</li>
+                    <li>Hover over a link and right-click</li>
+                    <li>Click on the input box and right-click</li>
+                    <li>Hover over the input box and right-click</li>
+                    <li>Right-click on the edge of the page to trigger automatic menu position adjustment</li>
+                    <li>This project supports a high degree of customization</li>
+                    <li>And more...</li>
+                </ul>
+            </div>
+
+            <h3><a href="https://www.rockaz.top/">Return to Homepage</a></h3>
+        </header>
+
+        <div class="demo-content">
+            <div class="demo-box">
+                <p class="mb-4">
+                    <a href="#" class="hover:underline">I am link</a>
+                </p>
+                <p>I am text</p>
+                <p><img src="bg.png" alt="I am an image"></p>
+                <p><input type="text" placeholder="I am an input box"></p>
+            </div>
+        </div>
+
+        <div class="demo-content">
+            <div class="demo-box">
+                <p class="mb-4">
+                    <a href="#" class="hover:underline">I am link</a>
+                </p>
+                <p>I am text</p>
+                <p><img src="bg.png" alt="I am an image"></p>
+                <p><input type="text" placeholder="I am an input box"></p>
+            </div>
+        </div>
+
+        <div class="demo-content">
+            <div class="demo-box">
+                <p class="mb-4">
+                    <a href="#" class="hover:underline">I am link</a>
+                </p>
+                <p>I am text</p>
+                <p><img src="bg.png" alt="I am an image"></p>
+                <p><input type="text" placeholder="I am an input box"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="CRCMenu.v2.js?v=53"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            window.globalMenu = createRightClickMenu();
+
+            const glassTheme = {
+                '--menu-bg': 'rgba(255, 255, 255, 0.1)',
+                '--menu-border': '1px solid rgba(255, 255, 255, 0.05)',
+                '--menu-backdrop': 'blur(10px)',
+                '--transition-speed': '0.1s',
+                '--item-hover-bg': 'rgba(255, 255, 255, 0.3)',
+                '--text-color': 'white',
+                '--header-color': 'white',
+                '--divider-color': '#e5e7eb'
+            };
+
+            const defaultTheme = {
+                '--menu-bg': 'rgba(255, 255, 255, 0.95)',
+                '--menu-border': '1px solid rgba(0, 0, 0, 0.1)',
+                '--menu-backdrop': 'blur(10px)',
+                '--transition-speed': '0.1s',
+                '--item-hover-bg': '#f3f4f6',
+                '--text-color': '#6b7280',
+                '--header-color': '#9ca3af',
+                '--divider-color': '#e5e7eb'
+            };
+
+            let isGlassThemeActive = false;
+            window.globalMenu.setTheme(defaultTheme);
+
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            themeToggleBtn.addEventListener('click', function () {
+                isGlassThemeActive = !isGlassThemeActive;
+                window.globalMenu.setTheme(isGlassThemeActive ? glassTheme : defaultTheme);
+                themeToggleBtn.textContent = isGlassThemeActive
+                    ? 'Click to switch theme (Current theme: Glass Style)'
+                    : 'Click to switch theme (Current theme: Default Style)';
+            });
+        });
+    </script>
+</body>
+
+</html>
