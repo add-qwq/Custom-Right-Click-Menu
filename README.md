@@ -172,12 +172,20 @@ menu.unmount();
 #### 5. Dynamically Update the Theme
 Modify the theme after initialization:
 ```javascript
-// Change menu background and text color
-menu.setTheme({
-  '--menu-bg': 'rgba(30, 30, 30, 0.95)',
-  '--text-color': '#ffffff',
-  '--item-hover-bg': 'rgba(60, 60, 60, 0.8)'
-});
+// Dynamically modify the style within the page (without changing the project source code)
+document.addEventListener('DOMContentLoaded', function() {
+            window.globalMenu = createRightClickMenu();
+            window.globalMenu.setTheme({
+                '--menu-bg': 'rgba(255, 255, 255, 0.1)',
+                '--menu-border': '1px solid rgba(255, 255, 255, 0.05)',
+                '--menu-backdrop': 'blur(10px)',
+                '--transition-speed': '0.1s',
+                '--item-hover-bg': 'rgba(255, 255, 255, 0.3)',
+                '--text-color': 'white',
+                '--header-color': 'white',
+                '--divider-color': '#e5e7eb'
+            });
+        });
 ```
 
 ### Implementation Principle
@@ -385,12 +393,20 @@ menu.unmount();
 #### 5. 动态更新主题
 初始化后仍可修改主题：
 ```javascript
-// 修改菜单背景和文本颜色
-menu.setTheme({
-  '--menu-bg': 'rgba(30, 30, 30, 0.95)',
-  '--text-color': '#ffffff',
-  '--item-hover-bg': 'rgba(60, 60, 60, 0.8)'
-});
+// 进行页面内动态修改样式（不更改项目源码）
+document.addEventListener('DOMContentLoaded', function() {
+            window.globalMenu = createRightClickMenu();
+            window.globalMenu.setTheme({
+                '--menu-bg': 'rgba(255, 255, 255, 0.1)',
+                '--menu-border': '1px solid rgba(255, 255, 255, 0.05)',
+                '--menu-backdrop': 'blur(10px)',
+                '--transition-speed': '0.1s',
+                '--item-hover-bg': 'rgba(255, 255, 255, 0.3)',
+                '--text-color': 'white',
+                '--header-color': 'white',
+                '--divider-color': '#e5e7eb'
+            });
+        });
 ```
 
 ### 实现原理
