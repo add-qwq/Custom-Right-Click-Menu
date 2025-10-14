@@ -22,8 +22,11 @@ Want to experience automated management (including automatically adding componen
 
 Want to use this right-click menu across all websites? Install the [Right Click Menu - Browser Extension](https://github.com/add-qwq/CRCM-Browser-Plugin).
 
+
+![Downloads](https://img.shields.io/github/downloads/add-qwq/Custom-Right-Click-Menu/total?style=flat-square&logo=github)
 ![GitHub license](https://img.shields.io/github/license/add-qwq/Custom-Right-Click-Menu?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/add-qwq/Custom-Right-Click-Menu)
+
 
 ### Project Overview
 - **[Online Demo (Click to Access - China Mirror Site)](https://www.rockaz.top/GitHub-Project-Demo/Custom-Right-Click-Menu/)**  
