@@ -249,6 +249,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 想在所有网站上体验此右键菜单？请安装[右键菜单 - 浏览器扩展](https://github.com/add-qwq/CRCM-Browser-Plugin)。
 
+![Downloads](https://img.shields.io/github/downloads/add-qwq/Custom-Right-Click-Menu/total?style=flat-square&logo=github)
 ![GitHub license](https://img.shields.io/github/license/add-qwq/Custom-Right-Click-Menu?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/add-qwq/Custom-Right-Click-Menu)
 
