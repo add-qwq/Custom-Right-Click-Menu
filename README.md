@@ -24,9 +24,9 @@
 <br>
 
 <p align="center">
-  <a target="_blank" href="?tab=readme-ov-file#english">English</a>
+  <a target="_blank" href="https://github.com/add-qwq/Custom-Right-Click-Menu#english">English</a>
   &nbsp;|&nbsp;
-  <a target="_blank" href="?tab=readme-ov-file#%E4%B8%AD%E6%96%87">中文</a>
+  <a target="_blank" href="https://github.com/add-qwq/Custom-Right-Click-Menu#%E4%B8%AD%E6%96%87">中文</a>
 </p>
 
 <br>
@@ -98,6 +98,8 @@ Adhering to the lightweight philosophy, V3 contains only a single core file but 
 - **CRCMenu.v3-A.js**: Recommended version with absolutely positioned submenus (simpler structure)
 - **CRCMenu.v3-B.js**: Alternative version with advanced nested submenu positioning (fixed positioning, better multi-level support)
 
+*Note: The repository contains the minified JS files `Custom-Right-Click-Menu-V3-A.js` and `Custom-Right-Click-Menu-V3-B.js`, which are formatted for readability.*
+
 Both files include complete Web Components definitions, logic, and default configurations.
   Includes:
   - Custom element (`<custom-right-click-menu>`)
@@ -108,7 +110,7 @@ Both files include complete Web Components definitions, logic, and default confi
 
 If you are unsure which version to choose, refer to the [Version Selection Guide](https://github.com/add-qwq/Custom-Right-Click-Menu/blob/main/Version_Selection_Guide.md).
 
-*Note: Previous versions (V1/V2) are no longer maintained. V3 focuses on a lightweight, framework-free deployment experience with in-depth intelligent optimization.*
+*Note: The `Custom-Right-Click-Menu-V3-A.js` and `Custom-Right-Click-Menu-V3-B.js` files in the repository are formatted JS files.*
 
 ### Quick Start
 #### 1. Get the Source Code
@@ -361,7 +363,9 @@ V3版本保持轻量理念，仅包含单个核心文件，但提供**两个核�
 - **CRCMenu.v3-A.js**：推荐版本，采用绝对定位子菜单（结构更简单）
 - **CRCMenu.v3-B.js**：备选版本，采用高级嵌套子菜单定位（固定定位，更佳多层级支持）
 
-两个文件均包含完整的Web Components定义、逻辑与默认配置。
+*注：仓库内的`Custom-Right-Click-Menu-V3-A.js`和`Custom-Right-Click-Menu-V3-B.js`是格式化后的JS文件*
+
+两个版本均包含完整的Web Components定义、逻辑与默认配置。
   内容包括：
   - 自定义元素（`<custom-right-click-menu>`）
   - 主题管理
