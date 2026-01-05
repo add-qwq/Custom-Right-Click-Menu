@@ -24,9 +24,9 @@
 <br>
 
 <p align="center">
-  <a target="_blank" href="https://github.com/add-qwq/Custom-Right-Click-Menu#english">English</a>
+  <a target="_blank" href="?tab=readme-ov-file#english">English</a>
   &nbsp;|&nbsp;
-  <a target="_blank" href="https://github.com/add-qwq/Custom-Right-Click-Menu#%E4%B8%AD%E6%96%87">中文</a>
+  <a target="_blank" href="?tab=readme-ov-file#%E4%B8%AD%E6%96%87">中文</a>
 </p>
 
 <br>
