@@ -97,6 +97,7 @@ class CustomRightClickMenu extends HTMLElement {
           border: var(--menu-border);
           z-index: 10000;
           pointer-events: none;
+          contain: layout paint;
         }
         .sub-menu.active {
           opacity: 1;
@@ -336,26 +337,39 @@ class CustomRightClickMenu extends HTMLElement {
             if (item.children && Array.isArray(item.children) && item.children.length > 0) {
                 const arrow = document.createElement('span');
                 arrow.className = 'arrow';
-                arrow.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24"><path fill="currentColor" fill-rule="evenodd" d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414"/></svg>
-                `;
+                arrow.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24"><path fill="currentColor" fill-rule="evenodd" d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414"/></svg>`;
                 menuItem.appendChild(arrow);
 
-                const subMenu = document.createElement('div');
-                subMenu.className = 'sub-menu';
-                subMenu.setAttribute('data-parent-id', item.id);
-                this.shadowRoot.appendChild(subMenu);
+                let subMenu = null;
+                let hideTimer = null;
 
-                this._renderMenuLayer(item.children, subMenu, ctx);
+                const handleShow = () => {
+                    if (hideTimer) {
+                        clearTimeout(hideTimer);
+                        hideTimer = null;
+                    }
 
-                if (subMenu.childNodes.length > 0) {
-                    const handleShow = () => {
-                        Array.from(parentContainer.children).forEach(child => {
-                            if (child.classList.contains('menu-item') && child !== menuItem) {
-                                const otherSub = this.shadowRoot.querySelector(`.sub-menu[data-parent-id="${child.dataset.id}"]`);
-                                if (otherSub) otherSub.classList.remove('active');
-                            }
-                        });
+                    Array.from(parentContainer.children).forEach(child => {
+                        if (child.classList.contains('menu-item') && child !== menuItem) {
+                            const otherSub = this.shadowRoot.querySelector(`.sub-menu[data-parent-id="${child.dataset.id}"]`);
+                            if (otherSub) otherSub.remove();
+                        }
+                    })
+
+                    if (!subMenu || !subMenu.isConnected) {
+                        subMenu = document.createElement('div');
+                        subMenu.className = 'sub-menu';
+                        subMenu.setAttribute('data-parent-id', item.id);
+                        this.shadowRoot.appendChild(subMenu);
+
+                        this._renderMenuLayer(item.children, subMenu, ctx);
+
+                        if (subMenu.childNodes.length === 0) {
+                            subMenu.remove();
+                            subMenu = null;
+                            return;
+                        }
+
                         const parentRect = menuItem.getBoundingClientRect();
                         subMenu.style.display = 'block';
                         subMenu.style.visibility = 'hidden';
@@ -368,9 +382,7 @@ class CustomRightClickMenu extends HTMLElement {
                         const canFitRight = parentRect.right + subWidth + safeMargin < viewportWidth;
                         const canFitLeft = parentRect.left - subWidth - safeMargin > 0;
 
-                        let finalLeft;
-                        let finalTop;
-                        let origin = 'top left';
+                        let finalLeft, finalTop, origin = 'top left';
 
                         if (canFitRight || canFitLeft) {
                             if (canFitRight) {
@@ -380,15 +392,11 @@ class CustomRightClickMenu extends HTMLElement {
                                 finalLeft = parentRect.left - subWidth + 3;
                                 origin = 'top right';
                             }
-
                             finalTop = parentRect.top - 5;
-
                             if (finalTop + subHeight + safeMargin > viewportHeight) {
                                 finalTop = viewportHeight - subHeight - safeMargin;
                             }
-                            if (finalTop < safeMargin) {
-                                finalTop = safeMargin;
-                            }
+                            finalTop = Math.max(safeMargin, finalTop);
                         } else {
                             finalLeft = Math.max(safeMargin, parentRect.left);
                             const canFitDown = parentRect.bottom + subHeight + safeMargin < viewportHeight;
@@ -405,61 +413,72 @@ class CustomRightClickMenu extends HTMLElement {
                         subMenu.style.top = `${finalTop}px`;
                         subMenu.style.transformOrigin = origin;
 
-                        subMenu.style.visibility = 'visible';
-                        subMenu.classList.add('active');
-                    };
+                        subMenu.addEventListener('mouseenter', () => {
+                            if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+                            subMenu.classList.add('active');
 
-                    const handleHide = (e) => {
-                        if (e.relatedTarget && (subMenu === e.relatedTarget || subMenu.contains(e.relatedTarget))) {
-                            return;
-                        }
-                        subMenu.classList.remove('active');
-                    };
-                    menuItem.addEventListener('mouseenter', handleShow);
-                    menuItem.addEventListener('mouseleave', handleHide);
-
-                    subMenu.addEventListener('mouseenter', () => {
-                        subMenu.classList.add('active');
-                        let p = parentContainer;
-                        while (p && p.classList.contains('sub-menu')) {
-                            p.classList.add('active');
-                            p = this.shadowRoot.querySelector(`.sub-menu[data-parent-id="${p.getAttribute('data-parent-id')}"]`)?.parentElement || null;
-                        }
-                    });
-
-                    subMenu.addEventListener('mouseleave', (e) => {
-                        if (e.relatedTarget && (menuItem === e.relatedTarget || menuItem.contains(e.relatedTarget))) {
-                            return;
-                        }
-
-                        if (e.relatedTarget && e.relatedTarget.closest('.sub-menu')) {
-                            if (!subMenu.contains(e.relatedTarget)) {
-                                subMenu.classList.remove('active');
+                            let p = parentContainer;
+                            while (p && p.classList.contains('sub-menu')) {
+                                p.classList.add('active');
+                                const parentId = p.getAttribute('data-parent-id');
+                                const pItem = this.shadowRoot.querySelector(`.menu-item[data-id="${parentId}"]`);
+                                p = pItem ? pItem.parentElement : null;
                             }
-                            return;
-                        }
+                        });
 
+                        subMenu.addEventListener('mouseleave', (e) => {
+                            if (e.relatedTarget && (menuItem === e.relatedTarget || menuItem.contains(e.relatedTarget))) return;
+
+                            if (subMenu) {
+                                subMenu.classList.remove('active');
+                                if (hideTimer) clearTimeout(hideTimer);
+                                hideTimer = setTimeout(() => {
+                                    if (subMenu && !subMenu.classList.contains('active')) {
+                                        subMenu.remove();
+                                        subMenu = null;
+                                    }
+                                }, 200);
+                            }
+
+                            let p = parentContainer;
+                            while (p && p.classList.contains('sub-menu')) {
+                                p.classList.remove('active');
+                                const parentId = p.getAttribute('data-parent-id');
+                                const parentItem = this.shadowRoot.querySelector(`.menu-item[data-id="${parentId}"]`);
+                                p = parentItem ? parentItem.parentElement : null;
+                            }
+                        });
+                    }
+
+                    subMenu.style.visibility = 'visible';
+                    subMenu.classList.add('active');
+                };
+
+                const handleHide = (e) => {
+                    if (e.relatedTarget && subMenu && (subMenu === e.relatedTarget || subMenu.contains(e.relatedTarget))) {
+                        return;
+                    }
+                    if (subMenu) {
                         subMenu.classList.remove('active');
+                        if (hideTimer) clearTimeout(hideTimer);
+                        hideTimer = setTimeout(() => {
+                            if (subMenu && !subMenu.classList.contains('active')) {
+                                subMenu.remove();
+                                subMenu = null;
+                            }
+                        }, 200);
+                    }
+                };
 
-                        let p = parentContainer;
-                        while (p && p.classList.contains('sub-menu')) {
-                            p.classList.remove('active');
-                            const parentId = p.getAttribute('data-parent-id');
-                            const parentItem = this.shadowRoot.querySelector(`.menu-item[data-id="${parentId}"]`);
-                            p = parentItem ? parentItem.parentElement : null;
-                        }
-                    });
-                }
+                menuItem.addEventListener('mouseenter', handleShow);
+                menuItem.addEventListener('mouseleave', handleHide);
             } else {
                 menuItem.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    if (typeof item.callback === 'function') {
-                        item.callback(ctx);
-                    }
+                    if (typeof item.callback === 'function') item.callback(ctx);
                     this.hideMenu();
                 });
             }
-
             parentContainer.appendChild(menuItem);
         });
     }
@@ -564,7 +583,7 @@ class CustomRightClickMenu extends HTMLElement {
         this.isAnimating = true;
         this.isOpening = false;
 
-        this.shadowRoot.querySelectorAll('.sub-menu').forEach(sm => sm.classList.remove('active'));
+        this.shadowRoot.querySelectorAll('.sub-menu').forEach(sm => sm.remove());
 
         this.customMenu.classList.remove('visible');
         this.customMenu.classList.add('hiding');
