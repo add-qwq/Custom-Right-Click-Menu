@@ -2,14 +2,15 @@
 
 ## How to choose the most suitable version for your business?
 
-Currently, CRCMenu.v3 has two versions: **CRCMenu.v3-A.js** and **CRCMenu.v3-B.js**.
+As you can see, CRCMenu.v3 currently has two versions: **CRCMenu.v3-A.js** and **CRCMenu.v3-B.js**.
 
 ### CRCMenu.v3-A.js:
 - Up to three-level menus
-- Desire to maintain clean code
+- Desire to maintain clean and concise code
 - Accept unified menu style management
 - No need for individual submenu control
 - Basic intelligent positioning for submenus
+- No pursuit of extreme performance optimization
 - **Summary:** If your business has no complex requirements, you can confidently choose Version A.
 
 ### CRCMenu.v3-B.js:
@@ -18,6 +19,7 @@ Currently, CRCMenu.v3 has two versions: **CRCMenu.v3-A.js** and **CRCMenu.v3-B.j
 - Need to independently control each submenu
 - Need to independently control each menu's style
 - More precise intelligent positioning for submenus
+- Business requires performance optimization for menus
 - **Summary:** If your business requires complex hierarchical control or independent menu management, choose Version B.
 
 ### Why Choose Version A:
@@ -25,15 +27,17 @@ Currently, CRCMenu.v3 has two versions: **CRCMenu.v3-A.js** and **CRCMenu.v3-B.j
 - Possibly, the project timeline is tight and needs to go live quickly
 - Possibly, fancy visual effects are not required
 - Possibly, your menu structure is relatively simple
+- Possibly, you are not sensitive to performance requirements
 
 ### Why Choose Version B:
 - Possibly, you are developing a complex web application
 - Possibly, the design requires special menu effects
 - Possibly, support for very deep menu levels is needed
 - Possibly, you want precise intelligent positioning for submenus
+- Possibly, you need extreme performance optimization
 
 ### Additional Notes:
-- In theory, both A and B support unlimited levels of menu nesting, but Version B is recommended for complex control.
+- In theory, both A and B support unlimited levels of menu nesting, but Version B is recommended for complex control scenarios.
 - One major reason for developing Version B was: **"If you want to apply a frosted glass (CSS blur effect) theme to multi-level menus, using this theme in Version A may trigger the browser's performance optimization mechanism, causing the second-level menu to lose the blur effect. Version B solves this issue by independently controlling menu styles."**
 
 Therefore, in most practical scenarios, you can start with Version A and consider switching to Version B if you encounter problems.
@@ -52,6 +56,7 @@ Therefore, in most practical scenarios, you can start with Version A and conside
 - 可接受菜单样式统一管理
 - 不需要单独控制子菜单
 - 基础的子菜单智能定位
+- 不追求极高的性能优化
 - **总结：** 若业务没有复杂需求，可无脑选择A版本
 
 ### CRCMenu.v3-B.js：
@@ -60,6 +65,7 @@ Therefore, in most practical scenarios, you can start with Version A and conside
 - 需要独立控制每个子菜单
 - 需要独立控制每个菜单样式
 - 更加精准的子菜单智能定位
+- 业务需要菜单有性能优化
 - **总结：** 若业务需要复杂层级控制或独立菜单管理，可选择B版本
 
 ### 为什么选A版本：
@@ -67,12 +73,14 @@ Therefore, in most practical scenarios, you can start with Version A and conside
 - 可能，项目时间紧张，需要快速上线
 - 可能，不需要花哨的视觉效果
 - 可能，你的菜单结构相对简单
+- 可能，你对性能要求不敏感
 
 ### 为什么选B版本：
 - 可能，你正在开发复杂Web应用
 - 可能，设计有要求特殊的菜单效果
 - 可能，需要支持非常深的菜单层级
 - 可能，你希望子菜单有精准智能定位
+- 可能，你需要极致的性能优化
 
 ### 补充说明：
 - A和B理论上都是支持无限层级菜单嵌套的，但是复杂控制推荐B。
