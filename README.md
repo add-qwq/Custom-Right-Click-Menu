@@ -278,6 +278,7 @@ Real-time detection on right-click:
 ### Planning
 - Explore more modern and elegant UI designs
 - Potential enhancement to support arbitrary icons/icon libraries in the future
+- Synchronized update [Right Click Menu - Browser Extension](https://github.com/add-qwq/CRCM-Browser-Plugin)
 
 ### License
 This project is licensed under the [Apache-2.0 License](LICENSE). You must comply with the terms of the license when using, modifying, or distributing this code.
@@ -302,7 +303,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 想要体验自动化管理（自动添加组件到网页+自动版本更新）？<br>通过[CRCM菜单管理器](https://github.com/add-qwq/CRCMenu-Manager)来体验项目的快速管理
 
-想在所有网站上体验此右键菜单？<br>请安装[右键菜单 - 浏览器扩展](https://github.com/add-qwq/CRCM-Browser-Plugin)
+想在所有网站上体验此右键菜单？<br>请安装[右键菜单-浏览器扩展](https://github.com/add-qwq/CRCM-Browser-Plugin)
 
 <br>
 
@@ -564,6 +565,7 @@ menu.unmount();
 ### 更新规划
 - 探索更加现代优雅的UI设计
 - 未来可能更改为可使用任意图标/图标库
+- 同步更新[右键菜单-浏览器扩展](https://github.com/add-qwq/CRCM-Browser-Plugin)
 
 ### 许可证
 本项目采用[Apache-2.0 License](LICENSE)授权。您在使用、修改或分发本代码时，必须遵守许可证条款。
