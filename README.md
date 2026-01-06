@@ -32,7 +32,6 @@
 <br>
 
 ## English
-
 ### Custom Right-Click Menu (V3)
 We are confident that this project is by far (with the specific time subject to the project's commits time) the **most fully-featured, open-source, and finest native JavaScript custom context menu project** on GitHub—no reliance on any frameworks required.
 
@@ -96,8 +95,8 @@ Built on Web Components as the core, this project replaces the browser's native 
 
 ### Project Structure
 Adhering to the lightweight philosophy, V3 contains only a single core file but offers **two core variants** to adapt to different submenu application scenarios:
-- **CRCMenu.v3-A.js**: Recommended version with absolutely positioned submenus (simpler structure)
-- **CRCMenu.v3-B.js**: Alternative version with advanced nested submenu positioning (fixed positioning, better multi-level support)
+- **CRCMenu.v3-A.js**: Recommended version, uses absolute positioning for submenus (simpler structure, suitable for lightweight applications)  
+- **CRCMenu.v3-B.js**: Alternative version, uses fixed positioning for submenus (better performance, suitable for multi-level nesting)
 
 *Note: The repository contains the minified JS files `Custom-Right-Click-Menu-V3-A.js` and `Custom-Right-Click-Menu-V3-B.js`, which are formatted for readability.*
 
@@ -278,7 +277,6 @@ Real-time detection on right-click:
 ### Planning
 - Explore more modern and elegant UI designs
 - Potential enhancement to support arbitrary icons/icon libraries in the future
-- Synchronized update [Right Click Menu - Browser Extension](https://github.com/add-qwq/CRCM-Browser-Plugin)
 
 ### License
 This project is licensed under the [Apache-2.0 License](LICENSE). You must comply with the terms of the license when using, modifying, or distributing this code.
@@ -303,7 +301,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 想要体验自动化管理（自动添加组件到网页+自动版本更新）？<br>通过[CRCM菜单管理器](https://github.com/add-qwq/CRCMenu-Manager)来体验项目的快速管理
 
-想在所有网站上体验此右键菜单？<br>请安装[右键菜单-浏览器扩展](https://github.com/add-qwq/CRCM-Browser-Plugin)
+想在所有网站上体验此右键菜单？<br>请安装[右键菜单 - 浏览器扩展](https://github.com/add-qwq/CRCM-Browser-Plugin)
 
 <br>
 
@@ -362,8 +360,8 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 V3版本保持轻量理念，仅包含单个核心文件，但提供**两个核心变体**以适应不同子菜单应用场景：
 
-- **CRCMenu.v3-A.js**：推荐版本，采用绝对定位子菜单（结构更简单）
-- **CRCMenu.v3-B.js**：备选版本，采用高级嵌套子菜单定位（固定定位，更佳多层级支持）
+- **CRCMenu.v3-A.js**：推荐版本，采用绝对定位子菜单（结构更简单，适合轻量业务）
+- **CRCMenu.v3-B.js**：备选版本，采用固定定位子菜单（性能更优，适合多层级嵌套）
 
 *注：仓库内的`Custom-Right-Click-Menu-V3-A.js`和`Custom-Right-Click-Menu-V3-B.js`是格式化后的JS文件*
 
@@ -565,7 +563,6 @@ menu.unmount();
 ### 更新规划
 - 探索更加现代优雅的UI设计
 - 未来可能更改为可使用任意图标/图标库
-- 同步更新[右键菜单-浏览器扩展](https://github.com/add-qwq/CRCM-Browser-Plugin)
 
 ### 许可证
 本项目采用[Apache-2.0 License](LICENSE)授权。您在使用、修改或分发本代码时，必须遵守许可证条款。
