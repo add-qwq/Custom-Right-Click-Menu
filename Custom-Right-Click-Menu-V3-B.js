@@ -39,6 +39,7 @@ class CustomRightClickMenu extends HTMLElement {
         this.menuOpenTime = 0;
         this.focusedElementBeforeMenu = null;
         this.scrollTimer = null;
+        this.hideMenuTimer = null;
         this.touchStartY = 0;
         this.target = null;
         this.menuItemsRegistry = new Map();
@@ -201,10 +202,22 @@ class CustomRightClickMenu extends HTMLElement {
     unmount() {
         if (!this.isMounted || !this.target) return;
         this.listenArgs.forEach(([ele, ...args]) => ele.removeEventListener(...args));
-        this.target = null;
-        this.isMounted = false;
-        this.listenArgs = [];
+        this.clearTimers();
         this.hideMenu();
+        this.isMounted = false;
+        this.target = null;
+        this.listenArgs = [];
+    }
+    
+    clearTimers() {
+        if (this.scrollTimer) {
+            clearTimeout(this.scrollTimer);
+            this.scrollTimer = null;
+        }
+        if (this.hideMenuTimer) {
+            clearTimeout(this.hideMenuTimer);
+            this.hideMenuTimer = null;
+        }
     }
 
     handleContextMenu(e) {
@@ -580,6 +593,8 @@ class CustomRightClickMenu extends HTMLElement {
 
     hideMenu() {
         if (this.isAnimating || !this.customMenu) return;
+        this.clearTimers();
+
         this.isAnimating = true;
         this.isOpening = false;
 
@@ -587,7 +602,8 @@ class CustomRightClickMenu extends HTMLElement {
 
         this.customMenu.classList.remove('visible');
         this.customMenu.classList.add('hiding');
-        setTimeout(() => {
+        this.hideMenuTimer = setTimeout(() => {
+            if (!this.customMenu) return;
             this.customMenu.style.display = 'none';
             this.customMenu.classList.remove('hiding');
             this.customMenu.style.left = 'auto';
@@ -597,6 +613,7 @@ class CustomRightClickMenu extends HTMLElement {
             this.currentLinkUrl = null;
             this.currentImageUrl = null;
             this.selectedText = '';
+            this.hideMenuTimer = null;
         }, 150);
     }
 }
