@@ -193,7 +193,9 @@ class CustomRightClickMenu extends HTMLElement {
             [document, 'touchstart', this.handleTouchStart.bind(this), { passive: true }],
             [document, 'touchmove', this.handleTouchMove.bind(this), { passive: true }],
             [document, 'keydown', this.handleKeydown.bind(this)],
-            [window, 'scroll', this.handleScroll.bind(this), { passive: true }]
+            [window, 'scroll', this.handleScroll.bind(this), { passive: true }],
+            [document, 'selectionchange', this.handleSelectionChange.bind(this)],
+            [document, 'touchend', this.handleTouchEnd.bind(this)]
         ];
         this.listenArgs.forEach(([ele, ...args]) => ele.addEventListener(...args));
         this.isMounted = true;
@@ -577,6 +579,37 @@ class CustomRightClickMenu extends HTMLElement {
             if (this.scrollTimer) clearTimeout(this.scrollTimer);
             this.scrollTimer = setTimeout(() => this.hideMenu(), 50);
         }
+    }
+    handleSelectionChange() {
+        const selection = window.getSelection();
+        if (this.isMenuVisible && selection.toString().length > 0) {
+            this.hideMenu();
+        }
+    }
+    handleTouchEnd(e) {
+        setTimeout(() => {
+            const selection = window.getSelection();
+            const text = selection.toString();
+
+            if (text && text.length > 0) {
+                try {
+                    const range = selection.getRangeAt(0);
+                    const rect = range.getBoundingClientRect();
+                    const clientX = rect.left + (rect.width / 2);
+                    const clientY = rect.bottom + 5;
+                    const mockEvent = {
+                        preventDefault: () => {},
+                        clientX: clientX,
+                        clientY: clientY,
+                        target: selection.anchorNode.parentElement || document.body,
+                        isSynthetic: true 
+                    };
+                    this.handleContextMenu(mockEvent);
+                } catch (err) {
+                    console.error("CRCM: Failed to calculate selection rect", err);
+                }
+            }
+        }, 50);
     }
     handleTouchStart(e) {
         if (this.isMenuVisible) this.touchStartY = e.touches[0].clientY;
