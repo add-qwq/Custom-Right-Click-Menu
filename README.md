@@ -26,7 +26,7 @@
 <p align="center">
   <a target="_blank" href="https://github.com/add-qwq/Custom-Right-Click-Menu#english">English</a>
   &nbsp;|&nbsp;
-  <a target="_blank" href="https://github.com/add-qwq/Custom-Right-Click-Menu?tab=readme-ov-file#中文">中文</a>
+  <a target="_blank" href="https://github.com/add-qwq/Custom-Right-Click-Menu#%E4%B8%AD%E6%96%87">中文</a>
 </p>
 
 <br>
@@ -273,6 +273,11 @@ Real-time detection on right-click:
 ### Acknowledgements
 - **Project Author**: add-qwq ([GitHub](https://github.com/add-qwq))
 - **Special Thanks**: Conard-Ferenc ([GitHub](https://github.com/Conard-Ferenc)) for providing design ideas and technical support for Version 2 (V2).
+- **Community Contributions**:
+  - [SatinAu-Zelynn](https://github.com/SatinAu-Zelynn)：Provided code logic for optimizing mobile text selection, improving component timer cleanup on unmount (V3.1 update)
+  - [Other Contributors](https://github.com/add-qwq/Custom-Right-Click-Menu/issues)：Thanks to all contributors for their valuable feedback and suggestions! ❤️
+
+
 
 ### Planning
 - Explore more modern and elegant UI designs
@@ -559,6 +564,9 @@ menu.unmount();
 
 - **项目作者**：add-qwq ([GitHub](https://github.com/add-qwq))
 - **特别感谢**：Conard-Ferenc ([GitHub](https://github.com/Conard-Ferenc)) 为早期版本(V2)提供设计思路与技术支持
+- **社区贡献**：
+  - [SatinAu-Zelynn](https://github.com/SatinAu-Zelynn)：提供了“优化移动端文字选取、完善组件卸载时的定时器清理”的相关代码逻辑（V3.1更新内容）
+  - [其他贡献者](https://github.com/add-qwq/Custom-Right-Click-Menu/issues)：非常感谢所有为项目提出issue的人❤️
 
 ### 更新规划
 - 探索更加现代优雅的UI设计
