@@ -39,6 +39,7 @@ class CustomRightClickMenu extends HTMLElement {
         this.menuOpenTime = 0;
         this.focusedElementBeforeMenu = null;
         this.scrollTimer = null;
+        this.hideMenuTimer = null;
         this.touchStartY = 0;
         this.target = null;
         this.menuItemsRegistry = new Map();
@@ -110,6 +111,7 @@ class CustomRightClickMenu extends HTMLElement {
             color: var(--text-color);
             position: relative;
             white-space: nowrap;
+            border-radius:10px;
         }
         .menu-header {
             padding: 0.5rem 1.25rem;
@@ -120,7 +122,7 @@ class CustomRightClickMenu extends HTMLElement {
         }
         #custom-menu.visible { opacity: 1; transform: scale(1); }
         #custom-menu.hiding { opacity: 0; transform: scale(0.95); }
-        .menu-item:hover{background-color:var(--item-hover-bg);border-radius:10px;}
+        .menu-item:hover{background-color:var(--item-hover-bg);}
         .menu-item:hover > .sub-menu{opacity:1;visibility:visible;transform:scale(1);}
         .menu-item i { width: 1.5rem; margin-right: 0.75rem; color: var(--text-color); }
         .menu-item .arrow { margin-left: var(--arrow-margin-left); margin-right: 0; font-size: 10px; opacity: 0.6; width: auto; display: flex; align-items: center; justify-content: center; }
@@ -188,7 +190,9 @@ class CustomRightClickMenu extends HTMLElement {
             [document, 'touchstart', this.handleTouchStart.bind(this), { passive: true }],
             [document, 'touchmove', this.handleTouchMove.bind(this), { passive: true }],
             [document, 'keydown', this.handleKeydown.bind(this)],
-            [window, 'scroll', this.handleScroll.bind(this), { passive: true }]
+            [window, 'scroll', this.handleScroll.bind(this), { passive: true }],
+            [document, 'selectionchange', this.handleSelectionChange.bind(this)],
+            [document, 'touchend', this.handleTouchEnd.bind(this)]
         ];
         this.listenArgs.forEach(([ele, ...args]) => ele.addEventListener(...args));
         this.isMounted = true;
@@ -196,10 +200,22 @@ class CustomRightClickMenu extends HTMLElement {
     unmount() {
         if (!this.isMounted || !this.target) return;
         this.listenArgs.forEach(([ele, ...args]) => ele.removeEventListener(...args));
-        this.target = null;
-        this.isMounted = false;
-        this.listenArgs = [];
+        this.clearTimers();
         this.hideMenu();
+        this.isMounted = false;
+        this.target = null;
+        this.listenArgs = [];
+    }
+
+    clearTimers() {
+        if (this.scrollTimer) {
+            clearTimeout(this.scrollTimer);
+            this.scrollTimer = null;
+        }
+        if (this.hideMenuTimer) {
+            clearTimeout(this.hideMenuTimer);
+            this.hideMenuTimer = null;
+        }
     }
     handleContextMenu(e) {
         e.preventDefault();
@@ -505,6 +521,37 @@ class CustomRightClickMenu extends HTMLElement {
             this.scrollTimer = setTimeout(() => this.hideMenu(), 50);
         }
     }
+    handleSelectionChange() {
+        const selection = window.getSelection();
+        if (this.isMenuVisible && selection.toString().length > 0) {
+            this.hideMenu();
+        }
+    }
+    handleTouchEnd(e) {
+        setTimeout(() => {
+            const selection = window.getSelection();
+            const text = selection.toString();
+
+            if (text && text.length > 0) {
+                try {
+                    const range = selection.getRangeAt(0);
+                    const rect = range.getBoundingClientRect();
+                    const clientX = rect.left + (rect.width / 2);
+                    const clientY = rect.bottom + 5;
+                    const mockEvent = {
+                        preventDefault: () => { },
+                        clientX: clientX,
+                        clientY: clientY,
+                        target: selection.anchorNode?.parentElement || document.body,
+                        isSynthetic: true
+                    };
+                    this.handleContextMenu(mockEvent);
+                } catch (err) {
+                    console.error("CRCM: Failed to calculate selection rect", err);
+                }
+            }
+        }, 50);
+    }
     handleTouchStart(e) {
         if (this.isMenuVisible) this.touchStartY = e.touches[0].clientY;
     }
@@ -519,11 +566,13 @@ class CustomRightClickMenu extends HTMLElement {
     }
     hideMenu() {
         if (this.isAnimating || !this.customMenu) return;
+        this.clearTimers();
         this.isAnimating = true;
         this.isOpening = false;
         this.customMenu.classList.remove('visible');
         this.customMenu.classList.add('hiding');
-        setTimeout(() => {
+        this.hideMenuTimer = setTimeout(() => {
+            if (!this.customMenu) return;
             this.customMenu.style.display = 'none';
             this.customMenu.classList.remove('hiding');
             this.customMenu.style.left = 'auto';
@@ -533,6 +582,7 @@ class CustomRightClickMenu extends HTMLElement {
             this.currentLinkUrl = null;
             this.currentImageUrl = null;
             this.selectedText = '';
+            this.hideMenuTimer = null;
         }, 150);
     }
 }
