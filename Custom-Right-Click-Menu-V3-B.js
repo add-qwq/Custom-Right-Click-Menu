@@ -52,6 +52,7 @@ class CustomRightClickMenu extends HTMLElement {
             '--menu-backdrop': 'blur(10px)',
             '--menu-shadow': '0 6px 15px -3px rgba(0, 0, 0, 0.08)',
             '--item-hover-bg': '#f3f4f6',
+            '--item-transition-speed': '0.2s',
             '--text-color': '#6b7280',
             '--header-color': '#9ca3af',
             '--divider-color': '#e5e7eb',
@@ -65,6 +66,7 @@ class CustomRightClickMenu extends HTMLElement {
       ${this._renderExternalStyles()}
       <style>
         :host{${this._renderThemeVariables()}}
+
         #custom-menu {
           display: none;
           position: fixed;
@@ -115,7 +117,32 @@ class CustomRightClickMenu extends HTMLElement {
             transition: all 0.25s ease;
             color: var(--text-color);
             position: relative;
-            border-radius:10px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--item-hover-bg);
+            border-radius: 10px;
+            z-index: -1;
+            transform: scale(0.9);
+            opacity: 0;
+            /* 把0.15s改成变量，可供自定义主题配置，但是不使用transition-speed，而是重新定义一个 */
+            transition: transform var(--item-transition-speed) ease, opacity var(--item-transition-speed) ease;
+        }
+        .menu-item:hover::before,
+        .menu-item.expanded::before {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .menu-item:active::before {
+            transform: scale(0.94);
+            opacity: 1;
         }
         .menu-header {
             padding: 0.5rem 1.25rem;
@@ -126,7 +153,6 @@ class CustomRightClickMenu extends HTMLElement {
         }
         #custom-menu.visible { opacity: 1; transform: scale(1); }
         #custom-menu.hiding { opacity: 0; transform: scale(0.95); }
-        .menu-item:hover{background-color:var(--item-hover-bg);}
         .menu-item i { width: 1.5rem; margin-right: 0.75rem; color: var(--text-color); }
         .menu-item .arrow { margin-left: var(--arrow-margin-left); font-size: 10px; opacity: 0.6; margin-right: 0; width: auto; display: flex; align-items: center; justify-content: center; }        
         .menu-item .arrow svg { height: 20px; width: 10px; }
@@ -364,6 +390,7 @@ class CustomRightClickMenu extends HTMLElement {
                         clearTimeout(hideTimer);
                         hideTimer = null;
                     }
+                    menuItem.classList.add('expanded');
 
                     Array.from(parentContainer.children).forEach(child => {
                         if (child.classList.contains('menu-item') && child !== menuItem) {
@@ -432,12 +459,14 @@ class CustomRightClickMenu extends HTMLElement {
                         subMenu.addEventListener('mouseenter', () => {
                             if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
                             subMenu.classList.add('active');
+                            menuItem.classList.add('expanded');
 
                             let p = parentContainer;
                             while (p && p.classList.contains('sub-menu')) {
                                 p.classList.add('active');
                                 const parentId = p.getAttribute('data-parent-id');
                                 const pItem = this.shadowRoot.querySelector(`.menu-item[data-id="${parentId}"]`);
+                                if (pItem) pItem.classList.add('expanded');
                                 p = pItem ? pItem.parentElement : null;
                             }
                         });
@@ -445,8 +474,16 @@ class CustomRightClickMenu extends HTMLElement {
                         subMenu.addEventListener('mouseleave', (e) => {
                             if (e.relatedTarget && (menuItem === e.relatedTarget || menuItem.contains(e.relatedTarget))) return;
 
+                            if (e.relatedTarget && e.relatedTarget.classList.contains('sub-menu')) {
+                                const relatedParentId = e.relatedTarget.getAttribute('data-parent-id');
+                                if (subMenu.querySelector(`.menu-item[data-id="${relatedParentId}"]`)) {
+                                    return;
+                                }
+                            }
+
                             if (subMenu) {
                                 subMenu.classList.remove('active');
+                                menuItem.classList.remove('expanded');
                                 if (hideTimer) clearTimeout(hideTimer);
                                 hideTimer = setTimeout(() => {
                                     if (subMenu && !subMenu.classList.contains('active')) {
@@ -461,6 +498,7 @@ class CustomRightClickMenu extends HTMLElement {
                                 p.classList.remove('active');
                                 const parentId = p.getAttribute('data-parent-id');
                                 const parentItem = this.shadowRoot.querySelector(`.menu-item[data-id="${parentId}"]`);
+                                if (parentItem) parentItem.classList.remove('expanded');
                                 p = parentItem ? parentItem.parentElement : null;
                             }
                         });
@@ -474,6 +512,7 @@ class CustomRightClickMenu extends HTMLElement {
                     if (e.relatedTarget && subMenu && (subMenu === e.relatedTarget || subMenu.contains(e.relatedTarget))) {
                         return;
                     }
+                    menuItem.classList.remove('expanded');
                     if (subMenu) {
                         subMenu.classList.remove('active');
                         if (hideTimer) clearTimeout(hideTimer);
@@ -577,8 +616,7 @@ class CustomRightClickMenu extends HTMLElement {
 
     handleScroll() {
         if (this.isMenuVisible) {
-            if (this.scrollTimer) clearTimeout(this.scrollTimer);
-            this.scrollTimer = setTimeout(() => this.hideMenu(), 50);
+            this.hideMenu();
         }
     }
 
@@ -790,6 +828,8 @@ const createRightClickMenu = () => {
             '--transition-speed': '0.1s',
             // 对应菜单项 hover 背景
             '--item-hover-bg': 'rgba(255, 255, 255, 0.22)',
+            // 对应菜单项过渡效果的时间
+            '--item-transition-speed': '0.2s',
             // 对应菜单项文字颜色
             '--text-color': 'white',
             // 对应菜单标题文字颜色
@@ -923,7 +963,7 @@ const createRightClickMenu = () => {
                                 callback: () => scrollToBottomAction()
                             },
                             {
-                                id: 'sub-3',
+                                id: 'sub-4',
                                 label: '深层嵌套项',
                                 icon: 'fa-layer-group',
                                 children: [

@@ -52,6 +52,7 @@ class CustomRightClickMenu extends HTMLElement {
             '--menu-backdrop': 'blur(10px)',
             '--menu-shadow': '0 6px 15px -3px rgba(0, 0, 0, 0.08)',
             '--item-hover-bg': '#f3f4f6',
+            '--item-transition-speed': '0.2s',
             '--text-color': '#6b7280',
             '--header-color': '#9ca3af',
             '--divider-color': '#e5e7eb',
@@ -107,11 +108,34 @@ class CustomRightClickMenu extends HTMLElement {
             padding: 0.75rem 1.25rem;
             margin: 0 5px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             color: var(--text-color);
             position: relative;
             white-space: nowrap;
-            border-radius:10px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--item-hover-bg);
+            border-radius: 10px;
+            z-index: -1;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform var(--item-transition-speed) ease, opacity var(--item-transition-speed) ease;
+        }
+        .menu-item:hover::before {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .menu-item:active::before {
+            transform: scale(0.94);
+            opacity: 1;
         }
         .menu-header {
             padding: 0.5rem 1.25rem;
@@ -122,7 +146,6 @@ class CustomRightClickMenu extends HTMLElement {
         }
         #custom-menu.visible { opacity: 1; transform: scale(1); }
         #custom-menu.hiding { opacity: 0; transform: scale(0.95); }
-        .menu-item:hover{background-color:var(--item-hover-bg);}
         .menu-item:hover > .sub-menu{opacity:1;visibility:visible;transform:scale(1);}
         .menu-item i { width: 1.5rem; margin-right: 0.75rem; color: var(--text-color); }
         .menu-item .arrow { margin-left: var(--arrow-margin-left); margin-right: 0; font-size: 10px; opacity: 0.6; width: auto; display: flex; align-items: center; justify-content: center; }
@@ -517,8 +540,7 @@ class CustomRightClickMenu extends HTMLElement {
     }
     handleScroll() {
         if (this.isMenuVisible) {
-            if (this.scrollTimer) clearTimeout(this.scrollTimer);
-            this.scrollTimer = setTimeout(() => this.hideMenu(), 50);
+            this.hideMenu();
         }
     }
     handleSelectionChange() {
@@ -720,6 +742,8 @@ const createRightClickMenu = () => {
             '--transition-speed': '0.1s',
             // 对应菜单项hover背景
             '--item-hover-bg': 'rgba(255, 255, 255, 0.22)',
+            // 对应菜单项过渡效果的时间
+            '--item-transition-speed': '0.2s',
             // 对应菜单项文字颜色
             '--text-color': 'white',
             // 对应菜单标题文字颜色
@@ -853,7 +877,7 @@ const createRightClickMenu = () => {
                                 callback: () => scrollToBottomAction()
                             },
                             {
-                                id: 'sub-3',
+                                id: 'sub-4',
                                 label: '深层嵌套项',
                                 icon: 'fa-layer-group',
                                 children: [
