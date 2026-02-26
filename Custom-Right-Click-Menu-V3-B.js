@@ -132,7 +132,6 @@ class CustomRightClickMenu extends HTMLElement {
             z-index: -1;
             transform: scale(0.9);
             opacity: 0;
-            /* 把0.15s改成变量，可供自定义主题配置，但是不使用transition-speed，而是重新定义一个 */
             transition: transform var(--item-transition-speed) ease, opacity var(--item-transition-speed) ease;
         }
         .menu-item:hover::before,
@@ -1006,4 +1005,5 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', createRightClickMenu);
 } else {
     createRightClickMenu();
+
 }
