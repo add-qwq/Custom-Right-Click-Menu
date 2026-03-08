@@ -157,7 +157,7 @@ class CustomRightClickMenu extends HTMLElement {
         .menu-item:hover > .sub-menu{opacity:1;visibility:visible;transform:scale(1) translateZ(0);}
         .menu-item .menu-icon{width:1.5rem;margin-right:0.75rem;color:var(--text-color);display:flex;align-items:center;justify-content:center;flex-shrink:0;transform:translateZ(0);backface-visibility:hidden;}
         .menu-item .menu-icon i { width: 100%; text-align: center; }
-        .menu-item .menu-icon svg{width:1.15rem;height:1rem;fill:currentColor;object-fit:contain;will-change:transform;}
+        .menu-item .menu-icon svg{width:1.25rem;height:1.1rem;fill:currentColor;object-fit:contain;will-change:transform;}
         .menu-item .arrow { margin-left: var(--arrow-margin-left); margin-right: 0; font-size: 10px; opacity: 0.6; width: auto; display: flex; align-items: center; justify-content: center; }
         .menu-item .arrow svg { height: 20px; width: 10px; }
         .menu-divider { border-top: 1px solid var(--divider-color); margin: 0.25rem 0; }
