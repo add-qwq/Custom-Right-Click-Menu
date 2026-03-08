@@ -276,6 +276,8 @@ Real-time detection on right-click:
 - **Community Contributions**:
   - [SatinAu-Zelynn](https://github.com/SatinAu-Zelynn)：Provided code logic for optimizing mobile text selection, improving component timer cleanup on unmount (V3.1 update)
   - [Other Contributors](https://github.com/add-qwq/Custom-Right-Click-Menu/issues)：Thanks to all contributors for their valuable feedback and suggestions! ❤️
+- **Third Party Thanks**
+  -This project uses Font Awesome Free SVG icons (copyright belongs to Fonticons, Inc.), following the CC BY 4.0 protocol
 
 
 
@@ -567,6 +569,8 @@ menu.unmount();
 - **社区贡献**：
   - [SatinAu-Zelynn](https://github.com/SatinAu-Zelynn)：提供了“优化移动端文字选取、完善组件卸载时的定时器清理”的相关代码逻辑（V3.1更新内容）
   - [其他贡献者](https://github.com/add-qwq/Custom-Right-Click-Menu/issues)：非常感谢所有为项目提出issue的人❤️
+- **第三方感谢**
+  - 本项目使用了 Font Awesome Free SVG 图标（图标版权归属 Fonticons, Inc.），遵循 CC BY 4.0 协议
 
 ### 更新规划
 - 探索更加现代优雅的UI设计
