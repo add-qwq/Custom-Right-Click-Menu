@@ -56,7 +56,7 @@ Want to use this right-click menu across all websites?<br>Install the [Right Cli
 ![GitHub stars](https://img.shields.io/github/stars/add-qwq/Custom-Right-Click-Menu)
 
 ### Project Overview
-- **[Online Demo (Click to Access - China Mirror Site)](https://www.rockaz.top/GitHub-Project-Demo/Custom-Right-Click-Menu/)**
+- **[Online Demo (Click to Access - China Mirror Site)](https://www.rockaz.cn/GitHub-Project-Demo/Custom-Right-Click-Menu/)**
 *Note: The server of this website is located in China, ensuring faster and more stable access for users within China. The page language is Chinese. However, for security defense purposes (to defend against a large number of automated attack IPs from outside China), all traffic from outside China has been blocked.*
 - **[Online Demo (Click to Access - GitHub Page Mirror Site)](https://add-qwq.github.io/Custom-Right-Click-Menu(DemoPage)/)**
 *Note: This website is hosted on GitHub Pages. Users within China may experience significant access delays, so it is more suitable for users outside China (users around the world).*
@@ -319,7 +319,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 ### 项目概述
 
-**[在线演示（点击访问--中国镜像站）](https://www.rockaz.top/GitHub-Project-Demo/Custom-Right-Click-Menu/)**
+**[在线演示（点击访问--中国镜像站）](https://www.rockaz.cn/GitHub-Project-Demo/Custom-Right-Click-Menu/)**
 
 *注：该网站服务器位于中国，中国境内用户访问更快速稳定页面语言为中文，但出于安全防御目的（为了防御大量来自中国境外的自动化攻击IP），我们已封锁所有中国以外的流量*
 
