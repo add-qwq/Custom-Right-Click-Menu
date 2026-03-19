@@ -59,6 +59,7 @@ class CustomRightClickMenu extends HTMLElement {
             '--transition-speed': '0.1s',
             '--arrow-margin-left': 'auto',
             '--menu-line-height': '1.4',
+            '--menu-white-space': 'nowrap',
             ...theme
         };
         this.externalStyles = externalStyles;
@@ -75,8 +76,9 @@ class CustomRightClickMenu extends HTMLElement {
           border-radius: 12px;
           box-shadow: var(--menu-shadow);
           padding: 0.5rem 0;
-          z-index: 9999;
+          z-index: 9989;
           min-width: 180px;
+          white-space: var(--menu-white-space);
           transition: all var(--transition-speed) ease-out;
           transform-origin: top left;
           opacity: 0;
@@ -102,9 +104,10 @@ class CustomRightClickMenu extends HTMLElement {
           box-shadow: var(--menu-shadow);
           padding: 0.5rem 0;
           min-width: 180px;
+          white-space: var(--menu-white-space);
           backdrop-filter: var(--menu-backdrop);
           border: var(--menu-border);
-          z-index: 10000;
+          z-index: 9990;
           pointer-events: none;
           contain: layout paint;
           user-select: none;
@@ -869,6 +872,8 @@ const createRightClickMenu = () => {
             //'--arrow-margin-left': '0.75rem',
             // 对应菜单项的行高
             '--menu-line-height': '1.4',
+            // 对应菜单的white-space
+            '--menu-white-space': 'nowrap',
         },*/
 
         // 外部样式（可选，FontAwesome图标库可换源）
