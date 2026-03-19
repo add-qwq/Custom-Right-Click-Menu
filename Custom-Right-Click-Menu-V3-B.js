@@ -320,17 +320,29 @@ class CustomRightClickMenu extends HTMLElement {
         const viewportHeight = window.innerHeight;
 
         let left = this.contextMenuX;
+        let originX = 'left';
         if (left + menuWidth + safeMargin > viewportWidth) {
-            left = Math.max(safeMargin, viewportWidth - menuWidth - safeMargin);
+            left = this.contextMenuX - menuWidth;
+            originX = 'right';
+            if (left < safeMargin) {
+                left = safeMargin;
+            }
         }
 
         let top = this.contextMenuY;
+        let originY = 'top';
         if (top + menuHeight + safeMargin > viewportHeight) {
-            top = Math.max(safeMargin, viewportHeight - menuHeight - safeMargin);
+            top = this.contextMenuY - menuHeight;
+            originY = 'bottom';
+            if (top < safeMargin) {
+                top = safeMargin;
+            }
         }
 
         left = Math.max(safeMargin, left);
         top = Math.max(safeMargin, top);
+
+        this.customMenu.style.transformOrigin = `${originX} ${originY}`;
 
         isNewOpen ? this.showMenu(left, top) : this.moveMenu(left, top);
         this.menuOpenTime = now;
