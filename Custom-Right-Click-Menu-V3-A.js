@@ -59,6 +59,7 @@ class CustomRightClickMenu extends HTMLElement {
             '--transition-speed': '0.1s',
             '--arrow-margin-left': 'auto',
             '--menu-line-height': '1.4',
+            '--item-before-scale': 'scale(0.9)',
             ...theme
         };
         this.externalStyles = externalStyles;
@@ -137,7 +138,7 @@ class CustomRightClickMenu extends HTMLElement {
             background-color: var(--item-hover-bg);
             border-radius: 10px;
             z-index: -1;
-            transform: scale(0.9);
+            transform: var(--item-before-scale);
             opacity: 0;
             transition: transform var(--item-transition-speed) ease, opacity var(--item-transition-speed) ease;
         }
@@ -757,9 +758,9 @@ const createRightClickMenu = () => {
     // 自定义主题配置和外部样式
     const menu = new CustomRightClickMenu({
 
-        //  示例，改为玻璃拟态右键菜单：
+        //  示例，改为玻璃拟态右键菜单（注意该版本使用此主题时，二级菜单无法使用blur效果，若需要请使用B版本）：
         /*theme: {
-            // 对应菜单的背景
+            // 对应菜单的背景颜色
             '--menu-bg': 'rgba(255, 255, 255, 0.1)',
             // 对应菜单的边框
             '--menu-border': '1px solid rgba(255, 255, 255, 0.05)',
@@ -776,11 +777,13 @@ const createRightClickMenu = () => {
             // 对应菜单标题文字颜色
             '--header-color': 'white',
             // 对应分隔线颜色
-            '--divider-color': '#e5e7eb'
-            // 对应菜单项箭头的margin-left
-            '--arrow-margin-left': '0.75rem',
+            '--divider-color': '#e5e7eb',
+            // 对应菜单项箭头的margin-left（通常不建议修改此属性）
+            //'--arrow-margin-left': '0.75rem',
             // 对应菜单项的行高
             '--menu-line-height': '1.4',
+            // 对应菜单项背景遮罩在默认状态的初始缩放值（改为1时，hover仅淡入；改为0.9时，hover更有弹性效果）
+            '--item-before-scale': 'scale(0.9)',
         },*/
 
         // 外部样式（可选，FontAwesome图标库可换源）
