@@ -99,9 +99,7 @@ Built on Web Components as the core, this project replaces the browser's native 
 
 ### Project Structure
 
-Adhering to the lightweight philosophy, V3 contains only a single core file but offers **two core variants** to adapt to different submenu application scenarios:
-- **CRCMenu.v3-A.js**: Recommended version, uses absolute positioning for submenus (simpler structure, suitable for lightweight applications)
-- **CRCMenu.v3-B.js**: Alternative version, uses fixed positioning for submenus (better performance, suitable for multi-level nesting)
+Adhering to the lightweight philosophy, V3 contains only a single core file but offers **two core variants** to adapt to different submenu application scenarios: CRCMenu.V3.js
 
 *Note: The files `Custom-Right-Click-Menu-V3-A.js` and `Custom-Right-Click-Menu-V3-B.js` in the repository are formatted JS files for readability.*
 
@@ -386,10 +384,7 @@ This project is licensed under the [Apache-2.0 License](LICENSE). You must compl
 
 ### 项目结构
 
-V3版本保持轻量理念，仅包含单个核心文件
-
-- **CRCMenu.v3-A.js**：推荐版本，采用绝对定位子菜单（结构更简单，适合轻量业务）
-- **CRCMenu.v3-B.js**：备选版本，采用固定定位子菜单（性能更优，适合多层级嵌套）
+V3版本保持轻量理念，仅包含单个核心文件：CRCMenu.V3.js
 
 *注：仓库内的`Custom-Right-Click-Menu-V3.js`是格式化后的JS文件*
 
